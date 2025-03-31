@@ -1,0 +1,58 @@
+
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portafolio de Wedding Planner</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <Navbar />
+  <main>
+    <section id="about" class="section">
+      <h1>Bienvenidos a Nuestro Portafolio</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus libero vitae eros auctor feugiat.</p>
+    </section>
+
+    <section id="services" class="section">
+      <h2>Nuestros Servicios</h2>
+      <p>Ofrecemos servicios completos para bodas, desde planificación hasta ejecución impecable.</p>
+    </section>
+
+    <section id="portfolio" class="section">
+      <h2>Portafolio</h2>
+      <p>Descubre algunos de nuestros eventos destacados.</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contacto</h2>
+      <p>¡Estamos encantados de ayudarte a planear tu día especial!</p>
+    </section>
+  </main>
+  <Footer />
+</body>
+</html>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #000;
+    color: #fff;
+  }
+
+  .section {
+    padding: 100px 5%;
+    text-align: center;
+  }
+
+  #about { background-color: #111; }
+  #services { background-color: #222; }
+  #portfolio { background-color: #333; }
+  #contact { background-color: #444; }
+</style>

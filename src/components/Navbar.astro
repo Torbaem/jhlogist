@@ -1,0 +1,50 @@
+---
+const links = [
+  { name: 'Sobre Nosotros', href: '#about' },
+  { name: 'Servicios', href: '#services' },
+  { name: 'Portafolio', href: '#portfolio' },
+  { name: 'Contacto', href: '#contact' },
+];
+---
+<nav class="navbar">
+  <div class="logo">Wedding Planner</div>
+  <ul class="nav-links">
+    {links.map(link => (
+      <li><a href={link.href}>{link.name}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .navbar {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+    color: #FFD700;
+    font-weight: bold;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover {
+    color: #FFD700;
+  }
+</style>
