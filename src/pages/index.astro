@@ -1,23 +1,70 @@
-
 ---
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
 ---
 <!DOCTYPE html>
 <html lang="es">
-<head>
-	<meta charset="UTF-8" />
-  	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portafolio de Wedding Planner</title>
-  <link rel="stylesheet" href="/styles.css" />
-</head>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>H Agencia De Meseros | Servicio Profesional para Eventos y Bodas</title>
+		<meta name="description" content="H Agencia de Meseros ofrece servicios premium de meseros profesionales para bodas, eventos sociales y corporativos en México. Garantizamos elegancia, excelencia y atención personalizada para hacer de su evento una experiencia inolvidable." />
+		<meta name="keywords" content="agencia de meseros, bodas de lujo, eventos sociales, eventos corporativos, meseros profesionales, servicio de banquetes, catering premium, organización de eventos" />
+		<meta name="author" content="H Agencia de Meseros" />
+		<meta property="og:title" content="H Agencia De Meseros | Servicio Profesional y Elegante" />
+		<meta property="og:description" content="Servicios premium de meseros profesionales para bodas, eventos sociales y corporativos. Elegancia y excelencia garantizada." />
+		<meta property="og:image" content="/public/hero.jpg" />
+		<meta property="og:url" content="https://hagenciademeseros.com" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
 <body>
   <Navbar />
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <span class="pre-heading">Bienvenidos a</span>
+      <h1>H AGENCIA DE MESEROS</h1>
+      <h2 class="tagline">ELEGANCIA Y DISTINCIÓN EN CADA DETALLE</h2>
+      <p class="hero-description">Transformamos su evento en una experiencia extraordinaria con nuestro servicio personalizado de alta categoría</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn btn-primary">Nuestros Servicios</a>
+        <a href="#contact" class="btn btn-secondary">Solicitar Cotización</a>
+      </div>
+      <div class="hero-credentials">
+        <div class="credential">
+          <span class="number">+500</span>
+          <span class="label">Eventos Realizados</span>
+        </div>
+        <div class="credential">
+          <span class="number">98%</span>
+          <span class="label">Clientes Satisfechos</span>
+        </div>
+        <div class="credential">
+          <span class="number">10+</span>
+          <span class="label">Años de Experiencia</span>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>Descubra más</span>
+      <div class="arrow"></div>
+    </div>
+  </section>
+
   <main>
-    <section id="about" class="section">
-      <h1>Bienvenidos a Nuestro Portafolio</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque luctus libero vitae eros auctor feugiat.</p>
-    </section>
+    <section id="about" class="section about">
+		<div class="about-content">
+		  <h2>Sobre Nosotros</h2>
+		  <p>En H Agencia de meseros, somos expertos en la organización de eventos personalizados para bodas, quince años, aniversarios y celebraciones especiales. Nos encargamos de cada detalle, desde la decoración, catering y música, hasta la coordinación completa del evento, asegurando una experiencia única y memorable.</p>
+		</div>
+		<img src="/public/nosotros.jpg" alt="Equipo de meseros profesionales de H Agencia sirviendo en evento de lujo" class="about-img" />
+	  </section>
 
     <section id="services" class="section">
       <h2>Nuestros Servicios</h2>
@@ -34,6 +81,7 @@ import Footer from '../components/Footer.astro';
       <p>¡Estamos encantados de ayudarte a planear tu día especial!</p>
     </section>
   </main>
+
   <Footer />
 </body>
 </html>
@@ -41,9 +89,199 @@ import Footer from '../components/Footer.astro';
 <style>
   body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #000;
     color: #fff;
+  }
+
+  .hero {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url('/public/hero.jpg') no-repeat center center / cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.4));
+  }
+
+  .hero-content {
+    color: #fff;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    padding: 0 20px;
+    animation: fadeIn 1.5s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .pre-heading {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3rem, 10vw, 5.5rem);
+    font-weight: 700;
+    color: #E4CB86;
+    margin: 0 0 1rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    line-height: 1.1;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .tagline {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1rem, 4vw, 1.8rem);
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin: 0 0 2rem;
+    color: #ffffff;
+  }
+
+  .hero-description {
+    font-family: 'Montserrat', sans-serif;
+    font-size: clamp(1rem, 3vw, 1.3rem);
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border-radius: 0;
+    transition: all 0.3s ease;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background-color: #E4CB86;
+    color: #000;
+    border: 2px solid #E4CB86;
+  }
+
+  .btn-primary:hover {
+    background-color: transparent;
+    color: #E4CB86;
+  }
+
+  .btn-secondary {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+  }
+
+  .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #E4CB86;
+    color: #E4CB86;
+  }
+
+  .hero-credentials {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 1rem;
+  margin-bottom: 80px; /* Añadir margen inferior para separarlo del scroll indicator */
+  flex-wrap: wrap;
+}
+
+  .credential {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #E4CB86;
+  }
+
+  .label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  animation: bounce 2s infinite;
+  z-index: 2;
+  margin-top: 30px;
+  bottom: 25px; 
+}
+
+  .arrow {
+    width: 20px;
+    height: 20px;
+    border-right: 2px solid #E4CB86;
+    border-bottom: 2px solid #E4CB86;
+    transform: rotate(45deg);
+    margin-top: 10px;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-10px);
+    }
+    60% {
+      transform: translateY(-5px);
+    }
   }
 
   .section {
@@ -51,8 +289,67 @@ import Footer from '../components/Footer.astro';
     text-align: center;
   }
 
+  .about {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    background-color: #111;
+    padding: 100px 5%;
+  }
+
+  .about-content {
+    flex: 1;
+    color: #fff;
+  }
+
+  .about h2 {
+    font-size: 2.5rem;
+    color: #E4CB86;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .about p {
+    font-size: 1.2rem;
+  }
+
+  .about-img {
+    flex: 1;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 10px;
+  }
+    
   #about { background-color: #111; }
   #services { background-color: #222; }
   #portfolio { background-color: #333; }
   #contact { background-color: #444; }
+
+  @media (max-width: 768px) {
+    .hero h1 {
+      margin-top: 60px;
+    }
+    
+    .hero-credentials {
+      gap: 20px;
+    }
+
+    .credential {
+      margin-bottom: 15px;
+    }
+
+    .hero-buttons {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .btn {
+      width: 80%;
+    }
+
+    .hero-description {
+      max-width: 95%;
+    }
+  }
 </style>

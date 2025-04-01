@@ -6,45 +6,221 @@ const links = [
   { name: 'Contacto', href: '#contact' },
 ];
 ---
+
 <nav class="navbar">
-  <div class="logo">Wedding Planner</div>
-  <ul class="nav-links">
-    {links.map(link => (
-      <li><a href={link.href}>{link.name}</a></li>
-    ))}
-  </ul>
+  <a href="#" class="logo">
+    <img src="/public/logosinfondo.png" alt="H Agencia de meseros Logo" class="logo-img" />
+  </a>
+  <div class="nav-container">
+    <ul class="nav-links">
+      {links.map(link => (
+        <li><a href={link.href}>{link.name}</a></li>
+      ))}
+    </ul>
+    <button class="menu-toggle" aria-label="Toggle Menu">☰</button>
+  </div>
+  <div class="overlay"></div>
 </nav>
 
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navbar = document.querySelector('.navbar');
+    const overlay = document.querySelector('.overlay');
+    let lastScrollY = window.scrollY;
+
+    // Función para cerrar el menú
+    const closeMenu = () => {
+      navLinks.classList.remove('active');
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    menuToggle.addEventListener('click', () => {
+      if (navLinks) {
+        navLinks.classList.toggle('active');
+        overlay.classList.toggle('active');
+        
+        // Bloquear scroll cuando el menú está abierto
+        if (navLinks.classList.contains('active')) {
+          document.body.style.overflow = 'hidden';
+        } else {
+          document.body.style.overflow = '';
+        }
+      }
+    });
+
+    // Cerrar menú al hacer clic en un enlace
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Cerrar menú al hacer clic en el overlay
+    overlay.addEventListener('click', closeMenu);
+
+    window.addEventListener('scroll', () => {
+      if (navbar) {
+        const currentScrollY = window.scrollY;
+        const isAtBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
+        if (currentScrollY > lastScrollY) {
+          navbar.classList.add('hidden');
+        } else {
+          navbar.classList.remove('hidden');
+          navbar.classList.add('scrolled');
+        }
+
+        if (currentScrollY === 0 || isAtBottom) {
+          navbar.classList.remove('scrolled');
+        }
+
+        lastScrollY = currentScrollY;
+      }
+    });
+    
+    // Cerrar menú al cambiar el tamaño de la ventana a un tamaño grande
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+        closeMenu();
+      }
+    });
+  });
+</script>
+
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&display=swap');
+
   .navbar {
-    background-color: #000;
-    color: #fff;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 5%;
+    color: #fff;
+    background-color: transparent;
+    z-index: 1000;
+    transition: top 0.3s, background-color 0.3s, opacity 0.3s;
   }
 
-  .logo {
-    font-size: 1.5rem;
-    color: #FFD700;
-    font-weight: bold;
+  .navbar.hidden {
+    top: -100px;
+    opacity: 0;
+  }
+
+  .navbar.scrolled {
+    background-color: rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+  }
+
+  .logo-img {
+    height: 80px;
+    object-fit: contain;
+  }
+
+  .nav-container {
+    display: flex;
+    align-items: center;
   }
 
   .nav-links {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
   }
 
   .nav-links a {
-    color: #fff;
+    color: #ffffff;
     text-decoration: none;
     font-size: 1rem;
+    font-weight: 500;
     transition: color 0.3s;
+    display: block;
+    padding: 10px 0;
   }
 
   .nav-links a:hover {
-    color: #FFD700;
+    color: #E4CB86;
+  }
+
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 20px;
+    z-index: 1001;
+  }
+
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .overlay.active {
+    display: block;
+    opacity: 1;
+  }
+
+  @media (max-width: 768px) {
+    .nav-container {
+      display: flex;
+      justify-content: flex-end;
+      width: auto;
+    }
+    
+    .nav-links {
+      position: fixed;
+      top: 0;
+      right: -280px;
+      width: 280px;
+      height: 100vh;
+      background-color: #000000;
+      flex-direction: column;
+      gap: 0;
+      padding: 100px 0 0;
+      transition: right 0.3s ease;
+      overflow-y: auto;
+      z-index: 1000;
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.active {
+      right: 0;
+    }
+
+    .nav-links li {
+      width: 100%;
+    }
+
+    .nav-links a {
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .menu-toggle {
+      display: block;
+      position: relative;
+      z-index: 1001;
+    }
   }
 </style>
