@@ -1,0 +1,128 @@
+---
+// Define las propiedades que necesita la tarjeta
+export interface Props {
+  titulo: string;
+  descripcion: string;
+  imagen: string;
+  linkId: string;
+}
+
+const { titulo, descripcion, imagen, linkId } = Astro.props;
+---
+
+<div class="servicio-card">
+  <div class="servicio-imagen">
+    <img src={imagen} alt={titulo} />
+  </div>
+  <div class="servicio-content">
+    <h3>{titulo}</h3>
+    <p>{descripcion}</p>
+    <a href="javascript:void(0)" class="servicio-link" data-servicio={linkId}>
+      Más detalles
+      <span class="arrow-icon">→</span>
+    </a>
+  </div>
+</div>
+
+<script define:vars={{ linkId }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Seleccionar el enlace específico para este servicio
+    const servicioLink = document.querySelector(`.servicio-link[data-servicio="${linkId}"]`);
+    
+    if (servicioLink) {
+      servicioLink.addEventListener('click', () => {
+        // Mostrar la isla correspondiente
+        const isla = document.getElementById(linkId);
+        if (isla) {
+          isla.style.display = 'flex';
+        }
+      });
+    }
+  });
+</script>
+
+<style>
+  /* Aplicamos exactamente los mismos estilos que tenías originalmente */
+  .servicio-card {
+    background-color: rgba(30, 30, 30, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .servicio-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  }
+
+  .servicio-imagen {
+    height: 250px;
+    overflow: hidden;
+  }
+
+  .servicio-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .servicio-card:hover .servicio-imagen img {
+    transform: scale(1.1);
+  }
+
+  .servicio-content {
+    padding: 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .servicio-content h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.5rem;
+    color: #e4cb86;
+    margin-bottom: 15px;
+  }
+
+  .servicio-content p {
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+  }
+
+  .servicio-link {
+    font-family: "Montserrat", sans-serif;
+    color: #e4cb86;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    align-self: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .servicio-link:hover {
+    color: #fff;
+  }
+
+  .arrow-icon {
+    margin-left: 8px;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+  }
+
+  .servicio-link:hover .arrow-icon {
+    transform: translateX(5px);
+  }
+</style>

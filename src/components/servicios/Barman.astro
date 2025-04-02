@@ -1,0 +1,243 @@
+---
+// components/servicios/Barman.astro
+---
+
+<div id="barman" class="servicio-isla">
+    <div class="isla-contenedor">
+      <button class="cerrar-isla">&times;</button>
+      <h2>Barman Profesionales</h2>
+      <div class="separator"></div>
+      
+      <div class="isla-contenido">
+        <div class="isla-imagen">
+          <img 
+            src="https://images.unsplash.com/photo-1574096079513-d8259312b785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" 
+            alt="Barman Profesionales"
+          />
+        </div>
+        
+        <div class="isla-detalles">
+          <h3>Servicios de Mixología</h3>
+          <ul>
+            <li>Preparación de cócteles clásicos y creaciones exclusivas</li>
+            <li>Barra personalizada según temática del evento</li>
+            <li>Espectáculo de flair bartending (opcional)</li>
+            <li>Servicio de bebidas premium</li>
+            <li>Menú de cócteles personalizado para tu evento</li>
+          </ul>
+          
+          <h3>Precios</h3>
+          <p>Desde $1,800 MXN por barman (servicio de 6 horas)</p>
+          
+          <h3>Experiencia Premium</h3>
+          <p>Nuestros bármanes no solo sirven bebidas, crean experiencias. Con técnicas innovadoras y presentaciones espectaculares, tus invitados quedarán impresionados con cada trago servido en tu celebración.</p>
+          
+          <a href="#contacto" class="btn">Personalizar servicio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Obtener la isla específica
+      const islaId = 'barman'; // Cambiar a 'barman', 'coordinacion', 'catering' según corresponda
+      const isla = document.getElementById(islaId);
+      
+      if (isla) {
+        // Agregar evento al botón de cerrar
+        const cerrarBtn = isla.querySelector('.cerrar-isla');
+        if (cerrarBtn) {
+          cerrarBtn.addEventListener('click', () => {
+            isla.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Restaurar scroll del body
+          });
+        }
+        
+        // Cerrar al hacer clic fuera del contenido (opcional)
+        isla.addEventListener('click', (e) => {
+          if (e.target === isla) {
+            isla.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }
+        });
+        
+        // Cerrar con la tecla ESC (opcional)
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && isla.style.display === 'flex') {
+            isla.style.display = 'none';
+            document.body.style.overflow = 'auto';
+          }
+        });
+      }
+    });
+  </script>
+<style>
+  .servicio-isla {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    display: none;
+    justify-content: center;
+    align-items: flex-start; /* Cambiado de center a flex-start */
+    overflow-y: auto;
+    padding: 20px;
+  }
+  
+  .isla-contenedor {
+    background-color: #222;
+    border: 1px solid rgba(228, 203, 134, 0.3);
+    border-radius: 5px;
+    max-width: 900px;
+    width: 90%;
+    position: relative;
+    padding: 40px;
+    margin: 40px auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+    max-height: 80vh; /* Limitamos la altura máxima */
+    overflow-y: auto; /* Permitimos scroll dentro del contenedor */
+  }
+  
+  /* Estilizamos la barra de desplazamiento para navegadores webkit */
+  .isla-contenedor::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .isla-contenedor::-webkit-scrollbar-track {
+    background: #333;
+  }
+  
+  .isla-contenedor::-webkit-scrollbar-thumb {
+    background-color: #e4cb86;
+    border-radius: 4px;
+  }
+  
+  .cerrar-isla {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #e4cb86;
+    transition: color 0.3s ease;
+    z-index: 1100; /* Aseguramos que esté por encima de todo */
+    width: 40px; /* Agregamos ancho */
+    height: 40px; /* Agregamos altura */
+    display: flex; /* Mejoramos el centrado */
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%; /* Hacemos redondo el botón */
+  }
+  
+  .cerrar-isla:hover {
+    color: #fff;
+    background-color: rgba(228, 203, 134, 0.2);
+  }
+  
+  /* El resto de tus estilos permanecen igual */
+  .isla-contenedor h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 2.2rem;
+    color: #e4cb86;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .separator {
+    width: 100px;
+    height: 2px;
+    background-color: #e4cb86;
+    margin: 0 auto 30px;
+  }
+  
+  .isla-contenido {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 30px;
+  }
+  
+  .isla-imagen img {
+    width: 100%;
+    border-radius: 5px;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .isla-detalles {
+    text-align: left;
+  }
+  
+  .isla-detalles h3 {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.6rem;
+    color: #e4cb86;
+    margin: 25px 0 15px;
+  }
+  
+  .isla-detalles h3:first-child {
+    margin-top: 0;
+  }
+  
+  .isla-detalles p, .isla-detalles li {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1rem;
+    color: #ccc;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  
+  .isla-detalles strong {
+    color: #e4cb86;
+    font-weight: 600;
+  }
+  
+  .isla-detalles ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .isla-detalles .btn {
+    display: inline-block;
+    background-color: transparent;
+    color: #e4cb86;
+    border: 2px solid #e4cb86;
+    padding: 12px 25px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .isla-detalles .btn:hover {
+    background-color: #e4cb86;
+    color: #000;
+  }
+  
+  @media (max-width: 768px) {
+    .isla-contenido {
+      grid-template-columns: 1fr;
+    }
+    
+    .isla-contenedor {
+      padding: 30px 20px;
+      margin: 20px auto; /* Reducimos el margen en móviles */
+      max-height: 85vh; /* Un poco más alto en móviles */
+    }
+    
+    .isla-contenedor h2 {
+      font-size: 1.8rem;
+    }
+  }
+</style>

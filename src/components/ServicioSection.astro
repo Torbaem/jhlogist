@@ -1,0 +1,147 @@
+---
+import ServicioCard from './ServicioCard.astro';
+import Meseros from './servicios/Meseros.astro';
+import Barman from './servicios/Barman.astro';
+import Coordinacion from './servicios/Coordinacion.astro';
+import Catering from './servicios/Catering.astro';
+---
+
+<section id="services" class="section">
+  <div class="servicios-container">
+    <h2>Nuestros Servicios</h2>
+    <div class="separator"></div>
+    <p class="section-description">
+      Hacemos que tu evento sea perfecto con nuestra atención al detalle y servicio excepcional.
+    </p>
+    
+    <div class="servicios-grid">
+      <!-- Usando el componente ServicioCard para cada servicio -->
+      <ServicioCard 
+        titulo="Meseros Profesionales"
+        descripcion="Personal capacitado y elegante para atender a tus invitados con el más alto estándar de servicio."
+        imagen="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        linkId="meseros"
+      />
+      
+      <ServicioCard 
+        titulo="Barman Profesionales"
+        descripcion="Expertos en mixología que crearán cócteles exclusivos y personalizados para tu celebración."
+        imagen="https://images.unsplash.com/photo-1574096079513-d8259312b785?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        linkId="barman"
+      />
+      
+      <ServicioCard 
+        titulo="Coordinación de Eventos"
+        descripcion="Planificación detallada y ejecución perfecta para que puedas disfrutar de tu día sin preocupaciones."
+        imagen="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        linkId="coordinacion"
+      />
+      
+      <ServicioCard 
+        titulo="Catering Gourmet"
+        descripcion="Deliciosa gastronomía con ingredientes frescos y presentación elegante para sorprender a tus invitados."
+        imagen="https://images.unsplash.com/photo-1555244162-803834f70033?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        linkId="catering"
+      />
+    </div>
+
+    <div class="servicios-cta">
+      <a href="#contacto" class="btn btn-primary">
+        Consulta nuestros paquetes
+      </a>
+    </div>
+  </div>
+  
+  <!-- Importar todas las islas de servicios -->
+  <Meseros />
+  <Barman />
+  <Coordinacion />
+  <Catering />
+</section>
+
+<style>
+  /* Estilos para la sección de servicios */
+  #services {
+    background-color: #222;
+    padding: 100px 5%;
+    text-align: center;
+  }
+
+  .servicios-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #services h2 {
+    font-size: 2.5rem;
+    color: #e4cb86;
+    font-family: "Playfair Display", serif;
+    margin-bottom: 1rem;
+  }
+
+  .separator {
+    width: 100px;
+    height: 2px;
+    background-color: #e4cb86;
+    margin: 0 auto 30px;
+  }
+
+  .section-description {
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2rem;
+    color: #fff;
+    max-width: 700px;
+    margin: 0 auto 50px;
+    line-height: 1.6;
+  }
+
+  .servicios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .servicios-cta {
+    margin-top: 30px;
+  }
+
+  .servicios-cta .btn {
+    background-color: transparent;
+    color: #e4cb86;
+    border: 2px solid #e4cb86;
+    padding: 12px 30px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  .servicios-cta .btn:hover {
+    background-color: #e4cb86;
+    color: #000;
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .servicios-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    #services {
+      padding: 70px 5%;
+    }
+    
+    #services h2 {
+      font-size: 2rem;
+    }
+    
+    .section-description {
+      font-size: 1rem;
+    }
+  }
+</style>
