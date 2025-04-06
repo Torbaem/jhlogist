@@ -1,0 +1,65 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryLayout from '../components/Gallery/GalleryLayout';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import "../styles/global.css";
+---
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<title>H Agencia De Meseros | Servicio Profesional para Eventos y Bodas</title>
+		<meta name="description" content="H Agencia de Meseros ofrece servicios premium de meseros profesionales para bodas, eventos sociales y corporativos en México. Garantizamos elegancia, excelencia y atención personalizada para hacer de su evento una experiencia inolvidable." />
+		<meta name="keywords" content="agencia de meseros, bodas de lujo, eventos sociales, eventos corporativos, meseros profesionales, servicio de banquetes, catering premium, organización de eventos" />
+		<meta name="author" content="H Agencia de Meseros" />
+		<meta property="og:title" content="H Agencia De Meseros | Servicio Profesional y Elegante" />
+		<meta property="og:description" content="Servicios premium de meseros profesionales para bodas, eventos sociales y corporativos. Elegancia y excelencia garantizada." />
+		<meta property="og:image" content="/public/hero.jpg" />
+		<!-- <meta property="og:url" content="https://hagenciademeseros.com" /> -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="/styles.css" />
+	</head>
+<body>
+  <Navbar />
+  <Layout title="Galería de Eventos | Tu Wedding Planner">
+    <main>
+      <GalleryLayout client:load />
+    </main>
+  </Layout>
+  <Footer />
+</body>
+
+
+<style>
+	main {
+	  width: 100%;
+	  padding: 2rem 0;
+	  background-color: #000; /* Fondo negro para combinar con tu estilo */
+	  min-height: 90vh;
+	}
+  
+	/* Estos estilos aseguran que el scroll personalizado se aplique a toda la galería */
+	:global(.gallery-container) {
+	  color: #ccc;
+	}
+	
+	/* Estilizamos la barra de desplazamiento para navegadores webkit para mantener coherencia */
+	:global(*::-webkit-scrollbar) {
+	  width: 8px;
+	}
+	
+	:global(*::-webkit-scrollbar-track) {
+	  background: #333;
+	}
+	
+	:global(*::-webkit-scrollbar-thumb) {
+	  background-color: #e4cb86;
+	  border-radius: 4px;
+	}
+  </style>

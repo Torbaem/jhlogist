@@ -1,4 +1,20 @@
 ---
+// Detectar si estamos en la página principal o no
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+
+const links = [
+  { name: 'Sobre Nosotros', href: isHomePage ? '#about' : '/#about' },
+  { name: 'Servicios', href: isHomePage ? '#services' : '/#services' },
+  { name: 'Nuestros Trabajos', href: '/galeria' },
+  { name: 'Contacto', href: isHomePage ? '#contact' : '/#contact' },
+];
+const links2 = [
+  { name: 'Meseros Profesionales', href: isHomePage ? '#services' : '/#services' },
+  { name: 'Barman', href: isHomePage ? '#services' : '/#services' },
+  { name: 'Coordinación de Eventos', href: isHomePage ? '#services' : '/#services' },
+  { name: 'Catering Gourmet', href: isHomePage ? '#services' : '/#services' },
+];
 ---
 <footer class="footer">
     <div class="footer-container">
@@ -11,20 +27,18 @@
         <div class="footer-column">
           <h3>Enlaces Rápidos</h3>
           <ul>
-            <li><a href="#about">Sobre Nosotros</a></li>
-            <li><a href="#services">Servicios</a></li>
-            <li><a href="#portfolio">Portafolio</a></li>
-            <li><a href="#contact">Contacto</a></li>
+            {links.map(link => (
+              <li><a href={link.href}>{link.name}</a></li>
+            ))}
           </ul>
         </div>
         
         <div class="footer-column">
           <h3>Servicios</h3>
           <ul>
-            <li><a href="#services">Meseros Profesionales</a></li>
-            <li><a href="#services">Barman</a></li>
-            <li><a href="#services">Coordinación de Eventos</a></li>
-            <li><a href="#services">Catering</a></li>
+            {links2.map(link => (
+              <li><a href={link.href}>{link.name}</a></li>
+            ))}
           </ul>
         </div>
         

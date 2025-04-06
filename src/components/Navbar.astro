@@ -1,14 +1,18 @@
 ---
+// Detectar si estamos en la página principal o no
+const isHomePage = Astro.url.pathname === "/" || Astro.url.pathname === "";
+
+
 const links = [
-  { name: 'Sobre Nosotros', href: '#about' },
-  { name: 'Servicios', href: '#services' },
-  { name: 'Portafolio', href: '#portfolio' },
-  { name: 'Contacto', href: '#contact' },
+  { name: 'Sobre Nosotros', href: isHomePage ? '#about' : '/#about' },
+  { name: 'Servicios', href: isHomePage ? '#services' : '/#services' },
+  { name: 'Nuestros Trabajos', href: '/galeria' },
+  { name: 'Contacto', href: isHomePage ? '#contact' : '/#contact' },
 ];
 ---
 
 <nav class="navbar">
-  <a href="#" class="logo">
+  <a href="/" class="logo">
   
     <img src="/public/logosinfondo.png" alt="H Agencia de meseros Logo" class="logo-img" />
   </a>
